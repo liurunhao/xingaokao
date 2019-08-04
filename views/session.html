@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <title>新高考选课指导</title>
+    <link rel="shortcut icon" href="/static/img/tit.jpg" type="image/x-icon"/>
+    <meta name="keywords" content="高考改革新方案,2018高考,高考试点,选考科目,测评"/>
+    <meta name="description"
+          content="从2018年秋季入学的高中一年级学生开始，全国各地高中生将自主确定选考科目，各招生高校根据本校各专业选考科目，结合统一高考和高中学业水平考试成绩，综合评价，择优录取"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="/static/css/r1.css"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="/static/css/r2.css"/>
+    <link type="image/x-icon" rel="shortcut icon" href="/static/img/tit.ico"/>
+    <link rel="alternate" type="application/vnd.wap.xhtml+xml" media="handheld" href="target"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="/static/css/r4.css?v=20160202"/>
+    <script type="text/javascript" src="/static/js/j1.js"></script>
+    <script type="text/javascript" src="/static/js/session.js"></script>
+    <meta name="baidu-site-verification" content="mIs8Ktx1r0"/>
+    <meta name="sogou_site_verification" content="qDh4zgarEg"/>
+</head>
+<body>
+<div id="site_header">
+    <div class='site_header_box'>
+        <a href="/">
+            <img class="logo" src="/static/img/head.jpg" width="120" height="36.5">
+        </a>
+        <div class='nav'>
+            <div class="description">
+                欢迎回来，{{.Username}} <button class="btn btn-default" onclick="logout()">退出</button>
+            </div>
+            <script>
+                //登出功能
+                function logout(){
+                    $.ajax({
+                        type:'post',
+                        url:'/logout',
+                        data:{},
+                        success:function(result){
+                            if(result.State > 0){
+                                alert(result.Message)
+                            }else {
+                                alert("退出成功");
+                                location.href = "/"
+                            }
+                        }
+                    })
+                }
+            </script>
+            <div>
+                <a href="/">首页</a></div>
+            <div><a target="_blank" href="/">新高考</a></div>
+            <div><a href="http://www.zizzs.com/">自主招生</a></div>
+            <div><a target="_blank" href="http://www.gaokao.com/baokao/lqfsx/gsfsx/">高考分数线</a></div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .banner {
+        height: 440px;
+        width: 100%;
+        text-align: center;
+        background: #3887bf;
+    }
+
+    .navi {
+        height: 50px;
+        width: 100%;
+        background: #5096c7;
+    }
+
+    .navi ul {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .navi ul li {
+        line-height: 50px;
+        padding: 0 30px;
+        margin: 0 10px;
+        float: left;
+        height: 49px;
+        border-bottom: 2px solid #5096c7;
+        cursor: pointer;
+    }
+
+    .navi ul li:hover {
+        border-bottom: 2px solid #fbfe00;
+    }
+
+    .navi ul li a {
+        color: #fff;
+    }
+
+    .navi ul li a:hover {
+        color: #fbfe00;
+    }
+</style>
+<div class='banner'><img src="/static/img/banner.png?v=20160107"/></div>
+<div class='navi'>
+    <ul>
+        <li><a href="/">开始测评</a></li>
+        <li><a href="/gw">国务院高考新方案</a></li>
+        <li><a href="/sh">上海试点新方案</a></li>
+        <li><a href="/zx">江西试点新方案</a></li>
+        <li><a href="/qj">浙江试点新方案</a></li>
+        <li><a href="/jw">趣味图解</a></li>
+    </ul>
+</div>
+<style type="text/css">
+    .content {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .content .toy_1 {
+        margin: 50px auto 0 auto;
+        width: 40px;
+        display: block;
+    }
+
+    .content .title {
+        width: 800px;
+        margin: 30px auto;
+        text-align: center;
+        font-size: 40px;
+        color: #333;
+    }
+
+    .content .title hr {
+        width: 300px;
+        border-top: 1px dashed #dddddd;
+    }
+
+    .content .box_1 {
+        width: 100%;
+        margin: 30px 0;
+        border-bottom: 1px solid #5096c7;
+        float: left;
+        height: 60px;
+    }
+
+    .content .box_1 img {
+        margin: 0 20px;
+        float: left;
+    }
+
+    .content .box_1 b {
+        font-size: 23px;
+        font-weight: normal;
+        color: #333;
+        padding: 15px 20px;
+        height: 60px;
+        float: left;
+        border: 0px;
+        margin-left: 10px;
+        color: #666;
+        cursor: pointer;
+    }
+
+    .content .box_1 .on {
+        border: 1px solid #5096c7;
+        border-bottom: 1px solid #fff;
+        color: #333
+    }
+
+    .content .box_1 span {
+        float: right;
+        width: 280px;
+        height: 50px;
+        border-radius: 25px;
+        background: #efefef;
+        color: #3c8aba;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .content .box_1 span strong {
+        font-size: 20px;
+    }
+
+    .content .box_2, .content .box_8 {
+        font-size: 30px;
+        float: left;
+        width: 100%;
+        margin: 0 0 20px 0;
+        color: #333;
+        padding: 20px 0 10px 20px;
+    }
+
+    .content .box_2 span, .content .box_8 span {
+        font-size: 18px;
+        color: #666;
+    }
+
+    .content .box_3 {
+        float: left;
+        width: 90%;
+        margin: 5px 5%;
+    }
+
+    .content .box_4 {
+        width: 70%;
+        float: left;
+        margin: 0 0 0 20%;
+        padding-bottom: 20px;
+    }
+
+    .content .box_4 li {
+        float: left;
+        width: 188px;
+        height: 179px;
+        background: #ccc;
+        margin: 5px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .content .box_4 li a {
+        text-align: center;
+        width: 100%;
+        height: 30px;
+        background: #fff;
+        position: absolute;
+        bottom: 0;
+        filter: alpha(opacity=60);
+        -moz-opacity: 0.6;
+        -khtml-opacity: 0.6;
+        opacity: 0.6;
+        line-height: 30px;
+        color: #000;
+        z-index: 998;
+    }
+
+    .content .box_4 li span {
+        color: #00fc00;
+        width: 100%;
+        position: absolute;
+        height: 80px;
+        text-align: center;
+        top: 60px;
+        z-index: 999;
+        display: none;
+    }
+
+    .content .box_4 li span img {
+        margin-bottom: 10px;
+    }
+
+    .content .box_5, .content .box_9 {
+        width: 100%;
+        float: left;
+        background: #f5f5f5;
+        padding-bottom: 30px;
+    }
+
+    .content .box_5 select {
+        width: 50%;
+        margin-right: 30%;
+        height: 50px;
+        margin-top: 30px;
+        float: left;
+    }
+
+    .content .box_5 span {
+        padding: 10px 30px;
+        margin-top: 30px;
+        float: left;
+    }
+
+    .content .box_9 select {
+        width: 35%;
+        margin-right: 6%;
+        height: 50px;
+        margin-top: 30px;
+        float: left;
+    }
+
+    .content .box_9 span {
+        padding: 10px 10px;
+        margin-top: 30px;
+        float: left;
+    }
+
+    .content .submit {
+        width: 300px;
+        padding: 10px;
+        background: #ffce08;
+        border-radius: 10px;
+        border: 0;
+        margin: 20px 350px 10px 350px;
+    }
+
+    .content .box_6 {
+        font-size: 30px;
+        float: left;
+        width: 95%;
+        margin: 20px 0 20px 5%;
+        color: #448abb;
+    }
+
+    .content .box_7 {
+        float: left;
+        width: 90%;
+        margin: 10px 5%;
+    }
+
+    .content .box_7 .t_1 {
+        float: left;
+        border: 1px solid #3887be;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .content .box_7 .t_1 a {
+        float: left;
+        padding: 10px 30px;
+        color: #333;
+    }
+
+    .content .box_7 .t_1 .on {
+        background: #3887be;
+        color: #fff;
+    }
+
+    .content .box_7 table {
+        margin: 20px 0;
+        width: 100%;
+        float: left;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+
+    .content .box_7 table td {
+        border: 1px solid #ddd;
+        padding: 5px 10px;
+    }
+
+    .content .box_7 table .t_2 td {
+        background: #3299dc;
+        text-align: center;
+        color: #fff;
+    }
+    #loading {
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+</style>
+<script type="text/javascript">
+    $('.navi').find('li:eq(0)').css('border-bottom', '2px solid #fbfe00');
+    $('.navi').find('a:eq(0)').css('color', '#fbfe00');
+</script>
+<div class='content'>
+    <img class='toy_1' src='/static/img/jsd.png'/>
+    <div class='title'>
+        <hr style='float: left;'/>
+        测评介绍
+        <hr style='float:right;'/>
+    </div>
+    <div>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        根据《国务院关于深化考试招生制度改革的实施意见》（国发【2014】35号）要求，全面深化统一高考招生改革（简称“高考改革新方案”）2018年9月份开始江西、广东、湖北、河北等省份实行新高考政策。18年刚入学的高一新生要面临“史、地、政、物、化、生”六门科目选三门作为自己的高考成绩，也就是全国多数省份的高中生将自主确定选考科目，各招生高校根据本校各专业选考科目，结合统一高考和高中学业水平考试成绩，综合评价，择优录取。<br/>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        为解决孩子们该如何选择科目并与未来的大学专业相关，同时相响应国家新高考政策的改革，我们团队提供“根据科目选大学(专业)”和“根据大学(专业)选科目”两种方法，供全国各地2018级高一新生及其家长使用，助力孩子将来选好高中升学科目，轻松圆梦理想大学和专业！
+        <div style='clear:both'>
+        </div>
+    </div>
+    <div class='box_1'>
+        <b class='on' id='nav_c_1'>根据科目选大学(专业)</b>
+        <b id='nav_c_2'>根据大学(专业)选科目</b>
+        <span>已有 <strong>35626</strong> 人参加测评</span>
+    </div>
+    <script type="text/javascript">$('#nav_c_1').click(function () {
+            $('#nav_c_1').addClass('on');
+            $('#nav_c_2').removeClass('on');
+            $('#submit_type_c').val('1');
+            $('.box_5').addClass('box_9');
+            $('.box_5').removeClass('box_5');
+            $('.box_2').show();
+            $('.box_4').show();
+            $('.xuan_t').show();
+            clear_all_val();
+            $('#major_info').hide();
+            $('.box_9').hide();
+            $('.content .box_9 span:eq(2)').hide();
+        });
+        $('#nav_c_2').click(function () {
+            $('#nav_c_2').addClass('on');
+            $('#nav_c_1').removeClass('on');
+            $('#submit_type_c').val('2');
+            $('.box_9').show();
+            $('.box_9').addClass('box_5');
+            $('.box_9').removeClass('box_9');
+            $('.box_2').hide();
+            $('.box_4').hide();
+            $('.xuan_t').hide();
+            clear_all_val();
+            $('#major_info').show();
+            $('.content .box_5 span:eq(2)').show();
+        });
+
+        function clear_all_val() {
+            $('#course_id').val('|');
+            $('#school_id').val('');
+            $('#school_id').html('<option value="" >不限大学</option>');
+            $('#major_info').val('');
+            $('#major_info').html('<option value="" >不限专业</option>');
+            $('.my_course_report').hide();
+            $('#area_id').val('0');
+            $('.xubox_close').click();
+            $('.box_7 .t_1 a:eq(0)').click();
+            $('.box_4 li').find('a').css('background', '#fff');
+            $('.box_4 li').find('span').hide();
+            $('.box_4 li').find('a').animate({
+                height: '30px'
+            });
+            box_4_over('.box_4 li');
+        }
+    </script>
+    <div class='box_2'>
+        <b style='color:#ff0000'>*</b>
+        请选择1至3门您最擅长的科目
+    </div>
+    <div class='box_4'>
+        <ul>
+            {{ range .Courses }}
+                <li style='background:url({{ .Image }});' idbin='{{ .Id }}'>
+                    <a>{{ .Name }}</a><span><img src="/static/img/ok.png"/><br/>{{ .Name }}</span>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class='box_8' style='display:none;'>选择您想报考的大学和专业
+        <span class='xuan_t'>（选填）</span>
+    </div>
+    <div class='box_9' style='display:none;'>
+        <span>选择地区：</span>
+        <select id='area_id' onchange='change_area()'>
+            <option value='0'>不限地区</option>
+            {{ range .Locations }}
+                <option value='{{ .Id }}'>{{ .Name }}</option>
+            {{ end }}
+        </select>
+        <span>选择大学：</span>
+        <select id='school_id' onchange='change_school()'/>
+        <option value="0">不限大学</option>
+        </select><span style='display:none;'>选择专业：</span>
+        <select id='major_info' style='display:none;'/>
+        <option value="0">不限专业</option>
+        </select>
+    </div>
+    <input type='hidden' id='course_id' value='|'/>
+    <input type='hidden' id='submit_type_c' value='1'/>
+    <input class='submit' type='button' value='开始测评'/>
+    <div id="loading"></div>
+    <div class='my_course_report' style='display:none;'>
+        <div class='box_6' id='report_schoollist'>测评报告
+
+        </div>
+        <div class='box_3'>
+
+        </div>
+        <div class='box_7'>
+            <div class='t_1'><a class='on'>本科大学</a>
+            </div>
+            <table class='s_1'>
+                <thead>
+                <tr class='t_2'>
+                    <td style='width:300px;'>高校名称</td>
+                    <td style='width:90px;'>所在区域</td>
+                    <td style='width:300px;'>专业</td>
+                    <td>选科数量</td>
+                    <td>选科</td>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">$(function () {
+        box_4_over('.box_4 li');
+        $('.box_4 li').click(function () {
+            var course_id = $('#course_id').val();
+            var idbin = '|' + $(this).attr('idbin') + '|';
+            if (course_id.indexOf(idbin) >= 0) {
+                $('#course_id').val(course_id.replace(idbin, '|'));
+                box_4_over(this);
+            } else {
+                $('#course_id').val(course_id + $(this).attr('idbin') + '|');
+                $(this).unbind('mouseenter');
+                $(this).unbind('mouseleave');
+            }
+        });
+        $('#school_id').click(function () {
+            if ($('#area_id').val() == '0') {
+                alert('请先选择所在地区！');
+            }
+        });
+        $('#major_info').click(function () {
+            if ($('#school_id').val() == '') {
+                alert('请先选择大学！');
+            }
+        });/* submit_type_c 1:根据科目选大学(专业),2:根据大学(专业)选科目*/
+        $('.submit').click(function () {
+            var submit_allow = true;
+            if ($('#submit_type_c').val() == 1) {
+                let ids = $('#course_id').val()
+                if (ids == '|' || ids == '' || ids.split('|').length-2 > 3) {
+                    submit_allow = false;
+                    alert('请选择1至3门您最擅长的科目！');
+                }
+            } else if ($('#submit_type_c').val() == 2) {
+                if ($('#school_id').val() == '0' || $('#major_info').val() == '0' || $('#area_id').val() == '0') {
+                    submit_allow = false;
+                    alert('请选择您想报考的大学、专业或地区！');
+                }
+            }
+            if (submit_allow) {
+                console.log('正在查询，请稍后···')
+                $.ajax({
+                    url: '/test',
+                    data: {
+                        college_id: $('#school_id').val(),
+                        profesional_id: $('#major_info').val(),
+                        location_id: $('#area_id').val(),
+                        course_id: $('#course_id').val(),
+                    },
+                    type: 'post',
+                    dataType: 'json',
+                    beforeSend:function(XMLHttpRequest){
+                        $("#loading").html("<img src='/static/img/loading.gif' />");
+                    },
+                    success: function (data) {
+                        $('.my_course_report').show();
+                        var text1 = '', text2 = '', num1 = 0, school_name = '';
+                        $.each(data, function (k, v) {
+                            var schoolname = '<td style="border-bottom:0;">' + v.college.name + '</td>';
+                            if (school_name == v.college.name) {
+                                schoolname = '<td style="border-top:0;border-bottom:0;"></td>';
+                            } else {
+                                num1++;
+                            }
+                            text1 += '<tr>' + schoolname + '<td>' + v.college.location.name + '</td><td>' + v.name + '</td><td>' + v.courses.length + '</td><td>' + v.courses.map(function (val) {
+                                return val.name;
+                            }).join(", ") + '</td></tr>';
+                            school_name = v.college.name;
+                        });
+                        $('.box_7 .s_1 tbody').html(text1);
+                        $('.box_7 .t_1 a:eq(0)').html(num1 + '所本科大学');
+                        window.location.href = '#report_schoollist';
+                        $("#loading").empty();
+                    },
+                    error: function () {
+                        alert("error!");
+                        $("#loading").empty();
+                    },
+                    complete : function () {
+                        console.log('查询结束')
+                    }
+                });
+            }
+        });
+    });
+
+    function box_4_over(object) {
+        $(object).mouseenter(function () {
+            $(this).find('a').stop();
+            $(this).find('span').stop();
+            $(this).find('a').css('background', '#000');
+            $(this).find('span').fadeIn(500);
+            $(this).find('a').animate({
+                height: '179px'
+            });
+        });
+        $(object).mouseleave(function () {
+            $(this).find('a').stop();
+            $(this).find('span').stop();
+            $(this).find('a').css('background', '#fff');
+            $(this).find('span').hide();
+            $(this).find('a').animate({
+                height: '30px'
+            });
+        });
+    }
+
+    function change_area() {
+        $.ajax({
+            url: `/location/${$('#area_id').val()}/colleges`,
+            data: {},
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                var text = '<option value="0" >不限大学</option>';
+                $.each(data, function (k, v) {
+                    text += '<option value="' + v.id + '">' + v.name + '</option>';
+                });
+                $('#school_id').html(text);
+            }
+        });
+        $('#major_info').html('<option value="0" >不限专业</option>');
+    }
+
+    function change_school() {
+        $.ajax({
+            url: `/colleges/${$('#school_id').val()}/professionals`,
+            data: {},
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                var text = '<option value="0" >不限专业</option>';
+                $.each(data, function (k, v) {
+                    text += '<option value="' + v.id + '">' + v.name + '</option>';
+                });
+                $('#major_info').html(text);
+            }
+        });
+    }
+</script>
+<style type="text/css">.user_center {
+        width: 500px;
+        height: 400px;
+        background: #fff;
+    }
+
+    .user_center .hd {
+        width: 100%;
+        height: 40px;
+    }
+
+    .user_center .hd li {
+        float: left;
+        width: 250px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #ededed;
+        cursor: pointer;
+    }
+
+    .user_center .hd li.on {
+        background: #fff;
+    }
+
+    .user_center .bd {
+        width: 100%;
+        height: 360px;
+    }
+
+    .user_center_login {
+        margin-top: 40px;
+    }
+
+    .user_center_login .input {
+        width: 70%;
+        margin: 18px 15%;
+        height: 30px;
+        border-bottom: 1px solid #ccc;
+        color: #666666;
+    }
+
+    .user_center_login .input input {
+        border: 0;
+        width: 270px;
+        height: 29px;
+        background: none;
+    }
+
+    .user_center_login .input #r_invalid_code {
+        width: 170px;
+    }
+
+    .user_center_login .input #get_invalid_code {
+        float: right;
+        border: 0;
+        width: 30%;
+        background: #4093e3;
+        color: #fff;
+        padding: 0 0;
+        text-align: center;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .user_center_login .l_r_botton {
+        width: 70%;
+        margin: 20px 15% 20px 15%;
+        border: 0;
+        background: #4093e3;
+        color: #fff;
+        padding: 5px 0;
+    }
+
+    .user_center_login .change_re_lo {
+        width: 70%;
+        margin: 0 15%;
+        font-size: 0.8em;
+        text-align: right;
+    }
+
+    .user_center_back {
+        width: 90%;
+        margin: 0 5%;
+        height: 40px;
+        color: #ccc;
+    }
+
+    .user_center_login3 {
+        width: 100%;
+        text-align: center;
+        color: #bebebe;
+        font-size: 0.8em;
+    }
+
+    .user_center_login3 img {
+        width: 50px;
+        margin: 10px;
+    }
+</style>
+<script type="text/javascript" src="/static/js/j2.js">
+</script>
+<script type="text/javascript">panshi_a = "3356737536_3409649664_1";
+    panshi_b = "960_60_10";</script>
+<script type="text/javascript" src="/static/js/j3.js"></script>
+<script type="text/javascript">
+    function login_regist_switch(i, r) {
+        $('.user_center .hd ul li:eq(' + r + ')').removeClass('on');
+        $('.user_center .hd ul li:eq(' + i + ')').addClass('on');
+        $('#user_center_box .bd .user_center_cat:eq(' + r + ')').hide();
+        $('#user_center_box .bd .user_center_cat:eq(' + i + ')').show();
+    }
+</script>
+<style type="text/css">/*高考工具*/
+    .tools_box {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .tools_box li {
+        list-style: none;
+        color: #000;
+        padding: 6px 0px;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        text-align: left;
+        padding-left: 12px;
+        cursor: pointer;
+    }
+
+    .tools_box li:hover {
+        background-color: #EF6014;
+        color: #fff;
+    }
+
+    .tools_box li:hover .msg {
+        background-color: #EF6014;
+        color: #fff;
+    }
+
+    .tools_box li .msg {
+        color: #EF602A;
+        font-size: 12px;
+        position: relative;
+        top: -6px;
+        padding-left: 3px;
+    }
+
+    .tools_box a {
+    }
+</style>
+<div id="site_foot">
+    <ul class="site_foot_links">
+        <br/>
+        <p class="beian_tongji">
+            <span>感谢您的使用！</span>
+        </p>
+    </ul>
+</div>
+<style>#fixed_dom {
+        position: fixed;
+        width: 50px;
+        right: 30px;
+        top: 50px;
+        z-index: 9999;
+    }
+
+    #fixed_dom span {
+        width: 50px;
+        height: 50px;
+        background: #666;
+        margin-bottom: 1px;
+        float: left;
+        filter: alpha(opacity=50);
+        -moz-opacity: 0.5;
+        -khtml-opacity: 0.5;
+        opacity: 0.5;
+        position: relative;
+    }
+
+    #fixed_dom .a_1 {
+        display: block;
+        width: 50px;
+        height: 50px;
+        padding: 7px 7px;
+        text-align: center;
+        line-height: 17px;
+        font-size: 13px;
+        color: #fff;
+    }
+
+    #fixed_dom .b_1 {
+        width: 210px;
+        position: absolute;
+        left: -210px;
+        top: 0;
+        display: none;
+    }
+
+    #fixed_dom .b_1 .b_2 {
+        width: 200px;
+        border: 1px solid #dddddd;
+        margin-right: 10px;
+        overflow: hidden;
+        background: #fff;
+        text-align: center;
+    }
+</style>
+<div id="fixed_dom">
+    <script type="text/javascript">
+        $('#fixed_dom span').mouseenter(function () {
+            $(this).find('div').css('display', 'block');
+            $(this).fadeTo(200, 1);
+        });
+        $('#fixed_dom span').mouseleave(function () {
+            $(this).find('div').css('display', 'none');
+            $(this).fadeTo(200, 0.5);
+        });
+        slide_scroll();
+
+        function slide_scroll() {
+            var top = $(document).scrollTop();
+            if (top == 0) {
+                $("#fixed_dom #scroll_top").hide();
+            } else {
+                $("#fixed_dom #scroll_top").show();
+            }
+        }
+
+        $(document).scroll(function () {
+            slide_scroll();
+        });
+    </script>
+</div>
+</body>
+<meta name="wlhlauth" content="e1d0456fd7106a2acba3470811328a14"/>
+</html>
+<script type="text/javascript" src="/static/js/j4.js"></script>
+<script type="text/javascript" src="/res/js/page/register_pc.js"></script>

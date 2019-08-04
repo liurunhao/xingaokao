@@ -1,0 +1,18 @@
+
+                             .input_class {  /*设置class属性名称为input_class的标签内容*/
+                                 width:250px;
+                                 height:16px;
+                             }
+
+caption{        /*设置caption标签内容*/
+    font-size:30px;
+    color:red;
+    text-shadow: yellow 6px 0px 5px;
+    font-stretch: normal;
+    font-weight: 900;
+}
+
+.aaa{          /*设置class属性名称为aaa的标签内容*/
+    font-size:16px;
+    font-weight: bold;
+}
